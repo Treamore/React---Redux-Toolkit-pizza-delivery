@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  border-radius: 10px;
+  font-size: 16px;
+  height: 40px;
+  width: 300px;
+  @media (max-width: 1000px) {
+    margin-bottom: 15px;
+  }
+}
+
+.input {
+  padding: 12px 15px;
+  border-color: black;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 16px;
+  width: 200px;
+
+  &:focus {
+    border-color: green;
+  }
+}
