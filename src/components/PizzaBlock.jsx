@@ -1,14 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPizza } from '../redux/slices/cartSlice';
+import { setModalVisibility, modalVisibilityTimeout } from '../redux/slices/modalSlice';
 
 const PizzaBlock = ({ id, title, price, imageUrl, sizes, types, description }) => {
   const dispatch = useDispatch();
   const pizzaTypes = ['Thin', 'Traditional'];
-  const [pizzaSize, setPizzaSize] = useState(0);
-  const [pizzaType, setPizzaType] = useState(0);
-  const [priceChanger, setPriceChanger] = useState(0);
+  const [pizzaSize, setPizzaSize] = React.useState(0);
+  const [pizzaType, setPizzaType] = React.useState(0);
+  const [priceChanger, setPriceChanger] = React.useState(0);
+  const [falseTimeout, setFalseTimeout] = React.useState(true);
+
+  if (!falseTimeout) {
+    setTimeout(() => {
+      dispatch(modalVisibilityTimeout());
+    }, 1000);
+    setFalseTimeout(true);
+  }
 
   const onClickAdd = () => {
     const item = {
@@ -21,6 +29,8 @@ const PizzaBlock = ({ id, title, price, imageUrl, sizes, types, description }) =
       finder: id + pizzaTypes[pizzaType] + sizes[pizzaSize],
     };
     dispatch(addPizza(item));
+    dispatch(setModalVisibility());
+    setFalseTimeout(false);
   };
 
   return (

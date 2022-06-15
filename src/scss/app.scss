@@ -24,6 +24,9 @@ body {
 
 .content {
   padding: 40px 0;
+  @media (max-width: 750px) {
+    padding-top: 0px;
+  }
 
   &__title {
     margin: 35px 0;
@@ -138,16 +141,45 @@ body {
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+    @media (max-width: 750px) {
+      display: block;
+      width: auto;
+    }
+
+    &-media {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+      @media (max-width: 750px) {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+        margin-left: 50px;
+        width: 100%;
+      }
+      @media (max-width: 600px) {
+        margin-left: 20px;
+      }
+      @media (max-width: 425px) {
+        margin-left: 0px;
+      }
+    }
 
     &-img {
       display: flex;
       align-items: center;
       margin-right: 15px;
       width: 10%;
+      @media (max-width: 750px) {
+        width: 30%;
+      }
 
       img {
         width: 80px;
         height: 80px;
+        @media (max-width: 750px) {
+          width: auto;
+        }
       }
     }
 
@@ -156,6 +188,10 @@ body {
       flex-direction: column;
       justify-content: center;
       width: 40%;
+
+      @media (max-width: 750px) {
+        width: 70%;
+      }
 
       h3 {
         font-weight: bold;
@@ -175,6 +211,10 @@ body {
       align-items: center;
       justify-content: space-between;
       width: 13%;
+      @media (max-width: 750px) {
+        width: auto;
+        margin-right: 30px;
+      }
 
       &-minus {
         svg {
@@ -186,6 +226,7 @@ body {
 
       b {
         font-size: 22px;
+        padding: 10px;
       }
     }
 
@@ -194,6 +235,10 @@ body {
       align-items: center;
       justify-content: center;
       width: 33%;
+      @media (max-width: 750px) {
+        width: auto;
+        margin-right: 30px;
+      }
 
       b {
         font-weight: bold;
@@ -207,6 +252,9 @@ body {
       align-items: center;
       justify-content: flex-end;
       width: 4%;
+      @media (max-width: 750px) {
+        width: auto;
+      }
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -241,9 +289,16 @@ body {
     &-details {
       display: flex;
       justify-content: space-between;
+      @media (max-width: 500px) {
+        flex-direction: column;
+        text-align: center;
+      }
 
       span {
         font-size: 22px;
+        @media (max-width: 500px) {
+          margin-bottom: 10px;
+        }
 
         &:last-of-type {
           b {
@@ -306,6 +361,9 @@ body {
     margin: 0 auto;
     width: 560px;
     text-align: center;
+    @media (max-width: 1000px) {
+      width: auto;
+    }
 
     h2 {
       font-size: 32px;
@@ -391,5 +449,26 @@ body {
     color: green;
     background-color: white;
     cursor: pointer;
+  }
+}
+
+.modal-confirm {
+  display: none;
+  &-visible {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+    background-color: green;
+    opacity: 0.8;
+    width: 200px;
+    height: 60px;
+    border-radius: 5%;
+    padding-top: 17px;
+    text-align: center;
+    span {
+      color: white;
+      margin: auto 20px;
+    }
   }
 }

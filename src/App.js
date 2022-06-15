@@ -5,10 +5,16 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 import { Route, Routes } from 'react-router-dom';
+import ModalConfirm from './components/ModalConfirm';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { modalVisibility } = useSelector((state) => state.modal);
+
   return (
     <div className="wrapper">
+      <ModalConfirm />
+
       <Header />
       <div className="content">
         <Routes>

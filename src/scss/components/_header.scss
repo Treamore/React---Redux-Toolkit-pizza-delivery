@@ -4,6 +4,10 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
+  @media (max-width: 1000px) {
+    padding-bottom: 0px;
+  }
+
   &__gradient {
     color: green;
   }
