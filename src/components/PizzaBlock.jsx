@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addPizza } from '../redux/slices/cartSlice';
+import { Link } from 'react-router-dom';
 import { setModalVisibility, modalVisibilityTimeout } from '../redux/slices/modalSlice';
 
 const PizzaBlock = ({ id, title, price, imageUrl, sizes, types, description }) => {
@@ -27,6 +28,7 @@ const PizzaBlock = ({ id, title, price, imageUrl, sizes, types, description }) =
       type: pizzaTypes[pizzaType],
       size: sizes[pizzaSize],
       finder: id + pizzaTypes[pizzaType] + sizes[pizzaSize],
+      quantity: 1,
     };
     dispatch(addPizza(item));
     dispatch(setModalVisibility());
@@ -36,9 +38,11 @@ const PizzaBlock = ({ id, title, price, imageUrl, sizes, types, description }) =
   return (
     <div className="pizza-block__center">
       <div className="pizza-block">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{title}</h4>
-        <div className="pizza-block__description">{description}</div>
+        <Link to={`/pizza/${id}`}>
+          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+          <h4 className="pizza-block__title">{title}</h4>
+          <div className="pizza-block__description">{description}</div>
+        </Link>
         <div className="pizza-block__selector">
           <ul>
             {types.map((elem, typeIndex) => {

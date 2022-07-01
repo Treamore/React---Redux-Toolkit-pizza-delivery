@@ -6,8 +6,8 @@ const NotFound = () => {
   return (
     <div className={styles.main}>
       <img src={sad_picture}></img>
-      <h1> Ничего не найдено :(</h1>
-      <p>Данная страница не существует</p>
+      <h1> We found nothing :(</h1>
+      <p>Page does not exist</p>
     </div>
   );
 };

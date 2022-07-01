@@ -4,6 +4,7 @@ const initialState = {
   totalPrice: 0,
   totalPizzas: 0,
   pizzas: [],
+  quantity: 1,
 };
 
 export const cartSlice = createSlice({
@@ -13,9 +14,9 @@ export const cartSlice = createSlice({
     addPizza: (state, action) => {
       const findPizza = state.pizzas.find((obj) => obj.finder === action.payload.finder);
       if (findPizza) {
-        findPizza.count++;
+        findPizza.count = findPizza.count + action.payload.quantity;
       } else {
-        state.pizzas.push({ ...action.payload, count: 1 });
+        state.pizzas.push({ ...action.payload, count: action.payload.quantity });
       }
       state.totalPrice = state.pizzas
         .reduce((sum, obj) => {

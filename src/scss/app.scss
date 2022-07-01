@@ -25,7 +25,7 @@ body {
 .content {
   padding: 40px 0;
   @media (max-width: 750px) {
-    padding-top: 0px;
+    padding-top: 20px;
   }
 
   &__title {
@@ -470,5 +470,18 @@ body {
       color: white;
       margin: auto 20px;
     }
+  }
+}
+
+.pizzasLoadingError {
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  h2 {
+    font-size: 40px;
+  }
+  img {
+    width: 200px;
+    margin-bottom: 30px;
   }
 }

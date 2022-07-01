@@ -23,10 +23,10 @@ const Sort = () => {
 
   return (
     <div ref={sortRef} className="sort">
-      <div className="sort__label">
+      <div onClick={() => setSortVisibility(!sortVisibility)} className="sort__label">
         <SortSvg />
         <b>Sort by:</b>
-        <span onClick={() => setSortVisibility(!sortVisibility)}>{sortArr[sortID]}</span>
+        <span>{sortArr[sortID]}</span>
       </div>
       {sortVisibility && (
         <div className="sort__popup">

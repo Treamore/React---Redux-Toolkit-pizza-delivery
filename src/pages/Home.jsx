@@ -3,23 +3,22 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import PizzaSkeleton from '../components/PizzaSkeleton';
-import axios from 'axios';
 import Pagination from '../components/Pagination';
 import { useSelector, useDispatch } from 'react-redux';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 import { setCategory, setSortID } from '../redux/slices/filterSlice';
+import { fetchItems, fetchAllItems } from '../redux/slices/pizzaLoadSlice';
+import PizzaLoadingError from '../components/PizzaLoadingError';
 
 let Home = () => {
   const { category, sortID } = useSelector((state) => state.filter);
+  const { pizzas, allPizzas, status } = useSelector((state) => state.pizzaLoad);
   const searchValue = useSelector((state) => state.search.searchValue);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [pizzas, setPizzas] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
   const [limit, setLimit] = React.useState(12);
   const [page, setPage] = React.useState(1);
-  const [allPizzas, setAllPizzas] = React.useState([]);
   const pagesArray = [1, 2, 3];
   const firstLoad = React.useRef(true);
   const loadByUrl = React.useRef(false);
@@ -40,17 +39,11 @@ let Home = () => {
     const sortOrder = sortTag.includes('-') ? 'desc' : 'asc';
     const categoryChosen = category ? `category=${category}` : ``;
     const tagChosen = sortTag ? `sortBy=${sortTag.replace('-', '')}&order=${sortOrder}` : ``;
-    setIsLoading(true);
-    const response = await axios.get(
-      `https://6294b3e6a7203b3ed06f152c.mockapi.io/items?${categoryChosen}&${tagChosen}&limit=${limit}&page=${page}`,
-    );
-    setPizzas(response.data);
-    setIsLoading(false);
+    dispatch(fetchItems({ categoryChosen, tagChosen, limit, page }));
   };
 
   const fetchAll = async () => {
-    const all = await axios.get(`https://6294b3e6a7203b3ed06f152c.mockapi.io/items`);
-    setAllPizzas(all.data);
+    dispatch(fetchAllItems());
   };
 
   React.useEffect(() => {
@@ -101,11 +94,15 @@ let Home = () => {
         <Sort />
       </div>
       <h2 className="content__title"> All pizzas</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(12)].map(() => <PizzaSkeleton key={Math.random()} />)
-          : filteredPizzas}
-      </div>
+      {status === 'error' ? (
+        <PizzaLoadingError />
+      ) : (
+        <div className="content__items">
+          {status === 'loading'
+            ? [...new Array(12)].map(() => <PizzaSkeleton key={Math.random()} />)
+            : filteredPizzas}
+        </div>
+      )}
       <Pagination filteredPizzas={pizzas} pagesArray={pagesArray} page={page} setPage={setPage} />
     </div>
   );

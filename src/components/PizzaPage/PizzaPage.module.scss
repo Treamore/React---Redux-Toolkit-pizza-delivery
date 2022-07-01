@@ -1,0 +1,334 @@
+.pizzaPage {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 1080px) {
+    width: 800px;
+  }
+  @media (max-width: 900px) {
+    width: 600px;
+  }
+  @media (max-width: 750px) {
+    width: 500px;
+  }
+  @media (max-width: 600px) {
+    width: auto;
+  }
+}
+
+.imgAndDesc {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  @media (max-width: 600px) {
+    width: auto;
+  }
+  img {
+    width: 350px;
+    @media (max-width: 900px) {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 450px) {
+      width: 250px;
+    }
+  }
+  div {
+    width: 350px;
+    @media (max-width: 900px) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 350px;
+    }
+    @media (max-width: 450px) {
+      width: 250px;
+    }
+    h4 {
+      font-size: 24px;
+      padding-bottom: 10px;
+      @media (max-width: 450px) {
+        font-size: 20px;
+      }
+    }
+    div {
+      font-size: 18px;
+      padding-bottom: 10px;
+      text-align: justify;
+      @media (max-width: 450px) {
+        font-size: 14px;
+      }
+    }
+    ul {
+      @media (max-width: 450px) {
+        font-size: 14px;
+      }
+    }
+  }
+  @media (max-width: 1080px) {
+    justify-content: center;
+  }
+  @media (max-width: 900px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.ingredients {
+  display: flex;
+  justify-content: center;
+  width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 0;
+  flex-wrap: wrap;
+  @media (max-width: 900px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+  }
+  @media (max-width: 750px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+  @media (max-width: 450px) {
+    padding: 15px 0;
+  }
+
+  div {
+    margin: 10px;
+    width: 100px;
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px;
+
+    img {
+      width: 100px;
+      margin-bottom: 5px;
+      @media (max-width: 450px) {
+        width: 75px;
+      }
+    }
+    span {
+      width: 100px;
+      text-align: center;
+      @media (max-width: 450px) {
+        width: 75px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.sizeAndType {
+  display: flex;
+  padding: 30px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  width: 500px;
+  justify-content: space-between;
+  @media (max-width: 750px) {
+    width: 400px;
+  }
+  @media (max-width: 500px) {
+    width: auto;
+    justify-content: center;
+    display: block;
+    padding: 10px 0;
+  }
+}
+
+.size {
+  position: relative;
+  padding: 0 30px;
+  text-align: center;
+  @media (max-width: 500px) {
+    margin-bottom: 20px;
+  }
+  &__Label {
+    span {
+      cursor: pointer;
+      color: green;
+      border-bottom: 1px dashed green;
+    }
+  }
+  &__PopUp {
+    cursor: pointer;
+    border-radius: 10px;
+    padding-top: 10px;
+    position: absolute;
+    z-index: 1;
+    width: 140px;
+    background-color: white;
+    @media (max-width: 500px) {
+      left: 100px;
+    }
+    li {
+      padding: 5px 0;
+      &:hover {
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.type {
+  position: relative;
+  padding: 0 30px;
+  text-align: center;
+  &__Label {
+    span {
+      cursor: pointer;
+      color: green;
+      border-bottom: 1px dashed green;
+    }
+  }
+  &__PopUp {
+    border-radius: 10px;
+    cursor: pointer;
+    padding-top: 10px;
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    background-color: white;
+    @media (max-width: 600px) {
+      width: 150px;
+    }
+    @media (max-width: 500px) {
+      left: 100px;
+    }
+    li {
+      padding: 5px 0;
+      &:hover {
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+.button {
+  border-radius: 30px;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  color: green;
+  border-color: green;
+  font-size: 16px;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  @media (max-width: 600px) {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding-bottom: 10px;
+  }
+  &:hover {
+    color: white;
+    background-color: green;
+  }
+}
+
+.countAndPayment {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  margin: 30px auto;
+  @media (max-width: 600px) {
+    display: block;
+    justify-content: center;
+    width: auto;
+  }
+  span {
+    display: block;
+    font-size: 18px;
+    @media (max-width: 600px) {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.itemCount {
+  display: flex;
+  @media (max-width: 600px) {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  b {
+    font-size: 18px;
+    padding: 5px 10px;
+  }
+}
+
+.buttonMinus {
+  display: flex;
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  border-color: green;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  svg {
+    transition: all 0.15s ease-in-out;
+    path {
+      fill: green;
+    }
+    path:first-of-type {
+      display: none;
+    }
+  }
+  &:hover {
+    background-color: green;
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+.buttonPlus {
+  display: flex;
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  border-color: green;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  svg {
+    transition: all 0.15s ease-in-out;
+    path {
+      fill: green;
+    }
+  }
+  &:hover {
+    background-color: green;
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+.active {
+  color: green;
+}

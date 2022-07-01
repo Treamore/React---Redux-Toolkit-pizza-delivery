@@ -3,6 +3,7 @@ import styles from './search.module.scss';
 import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/searchSlice';
+import clear from '../../images/clearSearch.svg';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,17 @@ const Search = () => {
         }}
         className={styles.input}
         placeholder="Search..."></input>
+      {value ? (
+        <img
+          onClick={() => {
+            setValue('');
+            sendRequest('');
+          }}
+          src={clear}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
