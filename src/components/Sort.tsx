@@ -4,7 +4,7 @@ import { setSortID } from '../redux/slices/filterSlice';
 import { RootState } from '../redux/store';
 import SortSvg from '../assets/img/SortSvg';
 
-const Sort: React.FC = () => {
+const Sort: React.FC = React.memo(() => {
   const sortArr: string[] = [
     'popularity',
     'price (high to low)',
@@ -56,6 +56,6 @@ const Sort: React.FC = () => {
       )}
     </div>
   );
-};
+});
 
 export default Sort;

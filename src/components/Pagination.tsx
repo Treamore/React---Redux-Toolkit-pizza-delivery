@@ -6,7 +6,7 @@ type PaginationProps = {
   pizzasLength: number;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ page, setPage, pizzasLength }) => {
+const Pagination: React.FC<PaginationProps> = React.memo(({ page, setPage, pizzasLength }) => {
   const pagesArray: number[] = [1, 2, 3];
   return (
     <div className={pizzasLength < 12 && page < 3 ? 'pagination__none' : 'pagination'}>
@@ -22,6 +22,6 @@ const Pagination: React.FC<PaginationProps> = ({ page, setPage, pizzasLength }) 
       ))}
     </div>
   );
-};
+});
 
 export default Pagination;

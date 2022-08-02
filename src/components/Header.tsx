@@ -7,7 +7,18 @@ import CartSvg from '../assets/img/CartSvg';
 import { RootState } from '../redux/store';
 
 const Header: React.FC = () => {
-  const { totalPrice, totalPizzas } = useSelector((state: RootState) => state.cart);
+  const { totalPrice, totalPizzas, pizzas } = useSelector((state: RootState) => state.cart);
+  const firstLoad = React.useRef(true);
+
+  React.useEffect(() => {
+    if (firstLoad.current) {
+      firstLoad.current = false;
+    } else {
+      const json = JSON.stringify(pizzas);
+      window.localStorage.setItem('pizzas', json);
+    }
+  }, [pizzas]);
+
   return (
     <div className="header">
       <div className="container adapt-container">
